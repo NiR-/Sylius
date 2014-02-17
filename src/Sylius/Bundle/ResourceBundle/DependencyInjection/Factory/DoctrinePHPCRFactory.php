@@ -18,7 +18,7 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class DoctrinePHPCRFactory extends AbstractFactory
 {
-    public function create($prefix, $resourceName, array $classes, $templates = null)
+    public function create($prefix, $resourceName, array $classes, $templates = null, $rolePrefix = null)
     {
         $pattern = $prefix.'.%s.'.$resourceName;
         $documentManagerId = 'doctrine_phpcr.odm.document_manager';
@@ -27,7 +27,7 @@ class DoctrinePHPCRFactory extends AbstractFactory
         $configuration
             ->setFactoryService('sylius.controller.configuration_factory')
             ->setFactoryMethod('createConfiguration')
-            ->setArguments(array($prefix, $resourceName, $templates))
+            ->setArguments(array($prefix, $resourceName, $templates, $rolePrefix))
             ->setPublic(false)
         ;
         $controller = new Definition($classes['controller']);

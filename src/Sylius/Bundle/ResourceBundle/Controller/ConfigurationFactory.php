@@ -43,12 +43,13 @@ class ConfigurationFactory
      * @param string $bundlePrefix
      * @param string $resourceName
      * @param string $templateNamespace
+     * @param string $rolePrefix
      * @param string $templatingEngine
      *
      * @return Configuration
      */
-    public function createConfiguration($bundlePrefix, $resourceName, $templateNamespace, $templatingEngine = 'twig')
+    public function createConfiguration($bundlePrefix, $resourceName, $templateNamespace, $rolePrefix = null, $templatingEngine = 'twig')
     {
-        return new Configuration($this->parametersParser, $bundlePrefix, $resourceName, $templateNamespace, $templatingEngine);
+        return new Configuration($this->parametersParser, $bundlePrefix, $resourceName, $templateNamespace, $rolePrefix, $templatingEngine);
     }
 }
